@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -13,8 +14,8 @@ public class CommentDto {
     private Date time;
     private String name;
     private String contentText;
-    private String contentPhotos;
     private String avatar;
     private Long heartCount;
+    private List<String> contentPhotos;
 }
 

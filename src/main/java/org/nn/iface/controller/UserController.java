@@ -9,6 +9,7 @@ import org.nn.iface.dto.StarDto;
 import org.nn.iface.dto.UserCommentDto;
 import org.nn.iface.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -66,4 +67,12 @@ public class UserController {
     public void comment(UserCommentDto userCommentDto) {
         userService.addComment(userCommentDto);
     }
+
+
+    @PostMapping("/uploadCommit")
+    @ResponseBody
+    public void uploadCommit(UserCommentDto userCommentDto) {
+        userService.addComment(userCommentDto);
+    }
+
 }
