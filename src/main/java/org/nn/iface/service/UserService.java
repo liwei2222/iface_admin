@@ -55,6 +55,10 @@ public class UserService {
         }
     }
 
+    public void insert(User user) {
+        userDao.insertUser(user);
+    }
+
     public List<CommentDto> getComments(String name) {
         User user = userDao.findPasswordByName(name);
         List<Comment> list = commentDao.findCommentByUserId(user.getId());

@@ -28,9 +28,26 @@ public class UserController {
     public User login(@Param("name") String name, @Param("password") String password) {
         User user = userService.findUser(name);
         if(Objects.isNull(user) || !user.getPassword().equals(password)) {
-            return user;
+            return new User();
         }
         return user;
+    }
+
+    @GetMapping("/register")
+    @ResponseBody
+    public void register(@RequestParam("name")String name, @RequestParam("password")String password ,@RequestParam("gender") String sex) {
+        User user = new User();
+        user.setName(name);
+        user.setPassword(password);
+        if(sex != null && sex.equals("female")) {
+            user.setSex("女");
+            user.setPic("http://img2.imgtn.bdimg.com/it/u=875749327,3752170631&fm=11&gp=0.jpg");
+        } else {
+            user.setSex("男");
+            user.setPic("http://img5.imgtn.bdimg.com/it/u=1390943909,2219975382&fm=26&gp=0.jpg");
+        }
+        user.setSign("这个人很懒，什么也没留下～～");
+        userService.insert(user);
     }
 
     @GetMapping("/doSync")
